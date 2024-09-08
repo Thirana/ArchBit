@@ -22,3 +22,7 @@ export function sortPosts(posts: Array<Post>) {
     return 0;
   });
 }
+
+export function filterProjectHeadings(posts: Array<Post>) {
+  return posts.filter((post) => post.isProjectHeading);
+}
