@@ -4,6 +4,14 @@ import { cn, sortPosts, filterProjectHeadings } from "@/lib/utils";
 import { posts } from "#site/content";
 import Link from "next/link";
 import { PostItem } from "@/components/post-item";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home() {
   const headingPosts = filterProjectHeadings(posts);
@@ -41,30 +49,33 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
+      <section className="container max-w-4xl py-6 lg:py-6 flex flex-col space-y-6 mt-40">
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
           My Projects
         </h2>
-        <ul className="flex flex-col">
+        <ul className="grid grid-cols-2 gap-8">
           {headingPosts.map(
             (post) =>
               post.published && (
-                <li
-                  key={post.slug}
-                  className="first:border-t first:border-border"
-                >
-                  <PostItem
-                    slug={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    date={post.date}
-                  />
-                </li>
+                <Link href={post.slug} key={post.slug}>
+                  <Card className="flex flex-col justify-between">
+                    <CardHeader className="gap-2">
+                      <CardTitle>{post.title}</CardTitle>
+                      <CardDescription>This is description</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p>{post.description?.slice(0, 70)} ...</p>
+                    </CardContent>
+                    <CardFooter>
+                      <p>Card Footer</p>
+                    </CardFooter>
+                  </Card>
+                </Link>
               )
           )}
         </ul>
       </section>
-      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
+      <section className="container max-w-4xl py-6 lg:py-6 flex flex-col space-y-6 mt-40">
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
           Latest Posts
         </h2>
