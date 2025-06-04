@@ -68,9 +68,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </aside>
 
         {/* Main content for posts */}
-        <main className="md:w-3/4 w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <main className="md:w-3/4 w-full grid grid-cols-1 sm:grid-cols-2 gap-6 ">
           {/* Blog Page Heading */}
-          <section className="col-span-full mb-8">
+          <section className="col-span-full mb-2">
             <div className="mb-3">
               <span className="inline-block w-12 h-1 rounded bg-blue-500"></span>
             </div>
@@ -83,32 +83,35 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </section>
 
           {displayPosts.map((post) => (
-            <Link href={post.slug} key={post.slug} className="group">
-              <Card className="flex flex-col justify-between h-full rounded-xl shadow-md border border-gray-200 bg-white transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-xl">
-                <CardHeader className="gap-2 pb-0">
-                  <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm text-gray-500">
-                    {post.category}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="py-4">
-                  <p className="text-gray-700">
-                    {post.description?.slice(0, 90)}...
-                  </p>
-                </CardContent>
-                <CardFooter className="flex items-center justify-between pt-3">
-                  <span className="inline-flex items-center gap-1 text-blue-600 text-xs font-medium group-hover:underline">
-                    View
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </CardFooter>
-              </Card>
+            <Link href={post.slug} key={post.slug} className="group h-full">
+              <div className="h-full flex flex-col">
+                <Card className="h-full flex flex-col bg-gradient-to-br from-blue-100 via-white to-pink-100 border border-gray-200 shadow-md rounded-xl p-6 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-xl">
+                  <CardHeader className="gap-2 pb-0">
+                    <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm text-gray-500">
+                      {post.category}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="py-4 flex-grow">
+                    <p className="text-gray-700">
+                      {post.description?.slice(0, 90)}...
+                    </p>
+                  </CardContent>
+                  <CardFooter className="flex items-center justify-between pt-3">
+                    <span className="inline-flex items-center gap-1 text-blue-600 text-xs font-medium group-hover:underline">
+                      View
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </CardFooter>
+                </Card>
+              </div>
             </Link>
           ))}
+
         </main>
       </div>
     </div>
