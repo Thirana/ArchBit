@@ -1,18 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface CategoryFilterProps {
   categories: string[];
 }
 
 export function CategoryFilter({ categories }: CategoryFilterProps) {
-  const [selected, setSelected] = useState<string | null>(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const selectedCategory = searchParams.get("category");
 
   const handleClick = (category: string) => {
-    setSelected(category === selected ? null : category);
-    console.log(`Filtering for category: ${category}`);
-    // Optionally: trigger URL update or client-side filtering
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    if (category === selectedCategory) {
+      current.delete("category"); // remove filter if already selected
+    } else {
+      current.set("category", category);
+    }
+    router.push(`?${current.toString()}`);
   };
 
   return (
@@ -21,7 +28,7 @@ export function CategoryFilter({ categories }: CategoryFilterProps) {
         <li key={category}>
           <button
             className={`w-full text-left px-4 py-2 rounded-lg transition-colors duration-150 ${
-              selected === category
+              selectedCategory === category
                 ? "bg-blue-600 text-white"
                 : "bg-blue-50 hover:bg-blue-100 text-blue-700"
             } font-medium focus:outline-none focus:ring-2 focus:ring-blue-400`}
