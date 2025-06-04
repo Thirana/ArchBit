@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "ArcBit",
-  url: "https://example.com",
-  description: "Nextjs 14 blog using velite, tailwind and shadcn",
+  url: "https://t.embuldeniya@gmail.com",
+  description: "curated collection of top-tier resources, tools, and guides for software engineers",
   author: "Thirana Embuldeniya",
   links: {
-    twitter: "https://twitter.com/jollyshopland",
-    github: "https://github.com/jolbol1",
-    personalSite: "https://jamesshopland.com",
+    twitter: "https://x.com/_Thirana",
+    github: "https://github.com/Thirana/ArchBit",
+    personalSite: "https://github.com/Thirana",
   },
 };
 

@@ -34,7 +34,7 @@ export function MainNav() {
       >
         Resources
       </Link>
-      <Link
+      {/* <Link
         href="/about"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary hidden sm:inline-block",
@@ -42,7 +42,7 @@ export function MainNav() {
         )}
       >
         About
-      </Link>
+      </Link> */}
     </nav>
   );
 }
