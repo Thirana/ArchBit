@@ -15,7 +15,7 @@ export function MainNav() {
         <span className="font-bold">{siteConfig.name}</span>
       </Link>
 
-      <Link
+      {/* <Link
         href="/projects"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary hidden sm:inline-block",
@@ -23,7 +23,7 @@ export function MainNav() {
         )}
       >
         Projects
-      </Link>
+      </Link> */}
 
       <Link
         href="/blog"
@@ -32,7 +32,7 @@ export function MainNav() {
           pathname === "/blog" ? "text-foreground" : "text-foreground/60"
         )}
       >
-        Blog
+        Resources
       </Link>
       <Link
         href="/about"
