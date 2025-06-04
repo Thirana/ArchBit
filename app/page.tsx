@@ -28,14 +28,14 @@ export default function Home() {
           </h1>
           <p className="max-w-[60rem] mx-auto text-muted-foreground sm:text-xl text-balance mt-6">
           Discover a curated collection of top-tier resources, tools, and guides to supercharge your
-          development journey, from coding to system design.
+          software engineering journey, from low level designs to heigh level designs.
           </p>
           <div className="flex flex-col gap-4 justify-center sm:flex-row mt-6">
             <Link
               href="/blog"
               className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-fit")}
             >
-              View my blog
+              Resources
             </Link>
             <Link
               href={siteConfig.links.github}
@@ -46,7 +46,7 @@ export default function Home() {
                 "w-full sm:w-fit"
               )}
             >
-              GitHub
+              Contribute
             </Link>
           </div>
         </div>
@@ -62,14 +62,28 @@ export default function Home() {
                 <Link href={post.slug} key={post.slug}>
                   <Card className="flex flex-col justify-between">
                     <CardHeader className="gap-2">
-                      <CardTitle>{post.title}</CardTitle>
-                      <CardDescription>This is description</CardDescription>
+                      <CardTitle className="leading-1">{post.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p>{post.description?.slice(0, 70)} ...</p>
                     </CardContent>
                     <CardFooter>
-                      <p>Card Footer</p>
+                      <span
+                        className={cn(
+                          "inline-block rounded-full px-3 py-1 text-xs font-semibold",
+                          post.category === "Cloud"
+                            ? "bg-gradient-to-r from-purple-400 to-pink-500 text-white"
+                            : post.category === "Low Level Design"
+                            ? "bg-gradient-to-r from-blue-400 to-cyan-500 text-white"
+                            : post.category === "System Design"
+                            ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white"
+                            : post.category === "Other"
+                            ? "bg-gradient-to-r from-green-400 to-emerald-500 text-white"
+                            : "bg-gray-200 text-gray-800"
+                        )}
+                      >
+                        {post.category}
+                      </span>
                     </CardFooter>
                   </Card>
                 </Link>
