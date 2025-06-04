@@ -28,10 +28,10 @@ export default function Home() {
             Welcome to my blog template. Built using tailwind, shadcn, velite
             and Nextjs 14.
           </p>
-          <hr className="w-full border-t-2 border-gray-300 mt-4" />
+          <hr className="w-full border-t-2 border-gray-300 m-4" />
         </div>
       </section>
-      <section className="container max-w-4xl py-6 lg:py-6 flex flex-col space-y-6 ">
+      <section className="container max-w-4xl py-6 lg:py-6 flex flex-col space-y-6 mt-10">
         <ul className="grid grid-cols-2 gap-8">
           {headingPosts.map(
             (post) =>
