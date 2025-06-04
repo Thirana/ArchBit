@@ -6,21 +6,15 @@ import "@/styles/mdx.css";
 
 interface PostPageProps {
   params: {
-    slug: string;
+    slug: string[];
   };
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
-  const slug = params?.slug;
+  const slug = params?.slug?.join("/");
   const post = posts.find((post) => post.slugAsParams === slug);
 
   return post;
-}
-
-export async function generateStaticParams(): Promise<
-  PostPageProps["params"][]
-> {
-  return posts.map((post) => ({ slug: post.slugAsParams }));
 }
 
 export default async function PostPage({ params }: PostPageProps) {
